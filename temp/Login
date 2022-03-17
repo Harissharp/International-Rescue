@@ -1,0 +1,20 @@
+session_start();//starting session
+
+$uPassword=$_POST['psw'];
+$uEmail=$_POST['uEmail'];
+
+$conn=setupconnection_sqli();
+testconnection_sqli($conn);
+
+//selecting what information we want
+$sql = "SELECT ID FROM admin_accounts_k1j";
+$sql = $sql . " where email='" . $uEmail . "' AND password='" . $uPassword . "';";
+$result = mysqli_query($conn, $sql);
+
+setLoggedStatus($result);
+
+
+mysqli_close($conn);
+
+
+#Possible new Login Code for webiste? 
